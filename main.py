@@ -16,10 +16,9 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
     pass
 
 def main():
-    while True:
-        ciutat, temperatura = obte_ciutat_i_temperatura()
-        temperatura_real = obtenir_temperatura(ciutat)
-        compara_temperatures(temperatura_real, temperatura)
+    ciutat, temperatura = obte_ciutat_i_temperatura()
+    temperatura_real = obtenir_temperatura(ciutat)
+    compara_temperatures(temperatura_real, temperatura)
 
 if __name__ == "__main__":
     main()
