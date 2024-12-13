@@ -1,2 +1,5 @@
 # hackday
-Repository for help beginners to get started with programming ideas
+
+Repositori per ajudar a principiants a començar amb idees de programació
+
+## Instruccions
