@@ -26,25 +26,53 @@ def obtenir_temperatura(ciutat):
     """Retorna la temperatura actual a la ciutat especificada."""
     api_key = os.getenv("TOKEN_API")
     url = f"http://api.openweathermap.org/data/2.5/weather?q={ciutat}&appid={api_key}&units=metric"
-    resposta = requests.get(url)
-    dades = resposta.json()
-    temperatura = dades["main"]["temp"]
+    try:
+        resposta = requests.get(url)
+        dades = resposta.json()
+        temperatura = dades["main"]["temp"]
+    except:
+        return None
     return temperatura
 
 def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
-    """Calcula la diferència entre la temperatura real i la suposada i comprova si està dins de la tolerància."""
-    diferència = abs(temperatura_real - temperatura_suposada)
-    if diferència <= tolerancia:
-        print(f"Les temperatures estan dins de la tolerància. Diferència: {diferència}°")
+    """Calcula la diferència entre la temperatura real i la suposada i comprova si està dins de la tolerància,
+    mostrant si la diferència és positiva o negativa i afegint emojis per indicar encerts o errors."""
+    # Calcular la diferència entre les dues temperatures
+    diferència = temperatura_real - temperatura_suposada  # La diferència pot ser positiva o negativa
+    # Comprovar si les temperatures són exactament iguals
+    if temperatura_real == temperatura_suposada:
+        print(f"Les temperatures són exactament iguals. Diferència: 0°. 👍")
+    
+    # Comprovar si la diferència està dins de la tolerància
+    elif abs(diferència) <= tolerancia:
+        if diferència > 0:
+            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més alta per {diferència}°. 👍")
+        elif diferència < 0:
+            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa per {diferència}°. 👍")
+        else:
+            print(f"Les temperatures estan exactament dins de la tolerància. Diferència: {diferència}°. 👍")
+    # Si la diferència no està dins de la tolerància
     else:
-        print(f"Les temperatures no estan dins de la tolerància. Diferència: {diferència}°")
+        if diferència > 0:
+            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més alta per {diferència}°. 👎")
+        elif diferència < 0:
+            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més baixa per {diferència}°. 👎")
 
 def main():
     print("SUPER COMPARADOR DE TEMPERATURES\n")
     ciutat = obte_ciutat()
     temperatura = obte_temperatura(ciutat)
-    temperatura_real = obtenir_temperatura(ciutat)
-    compara_temperatures(temperatura_real, temperatura)
+
+    while True:
+        maybe_temperatura_real = obtenir_temperatura(ciutat)
+        if maybe_temperatura_real is None:
+            print(f"Ciutat {ciutat} incorrecta")
+            ciutat = obte_ciutat()
+            continue
+        # Estem segurs que la temperatura es un valor valid
+        temperatura_real = maybe_temperatura_real
+        compara_temperatures(temperatura_real, temperatura)
+        break
 
 
 if __name__ == "__main__":
