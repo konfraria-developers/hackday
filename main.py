@@ -22,11 +22,11 @@ def obtenir_temperatura(ciutat):
 
 def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
     """Calcula la diferència entre la temperatura real i la suposada i comprova si està dins de la tolerància."""
-    if abs(temperatura_real - temperatura_suposada) <= tolerancia:
-        print("Les temperatures estan dins de la tolerància.")
+    diferència = abs(temperatura_real - temperatura_suposada)
+    if diferència <= tolerancia:
+        print(f"Les temperatures estan dins de la tolerància. Diferència: {diferència}°")
     else:
-        print("Les temperatures no estan dins de la tolerància.")
-
+        print(f"Les temperatures no estan dins de la tolerància. Diferència: {diferència}°")
 
 def main():
     ciutat, temperatura = obte_ciutat_i_temperatura()
