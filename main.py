@@ -6,8 +6,7 @@ import os
 def obte_ciutat():
     """Retorna la ciutat que l'usuari ha introduït."""
     # Demanem a l'usuari el nom de la ciutat
-    ciutat = input("Introdueix el nom de la ciutat: ")
-    # Mostrem la informació amb format
+    ciutat = input("🏙️ Introdueix el nom de la ciutat: ")
     print(f"\nS'ha triat la ciutat: {ciutat}.\n")
     return ciutat
 
@@ -16,14 +15,11 @@ def obte_temperatura(ciutat):
     # Demanem a l'usuari la temperatura
     while True:
         try:
-            temperatura = float(input("Introdueix la temperatura en aquesta ciutat: "))
+            temperatura = float(input("🌡️ Introdueix la temperatura en aquesta ciutat: "))
             print(f"\nLa ciutat {ciutat} podria tenir una temperatura de {temperatura} graus.\n")
             return temperatura
-            break
         except ValueError:
             print("\033[91mError: Heu d'introduir un valor numeric\033[0m")
-            # Mostrem la informació amb format
-#Tornem a executar la funcio
     
 
 def obtenir_temperatura(ciutat):
@@ -47,8 +43,8 @@ def main():
     print("SUPER COMPARADOR DE TEMPERATURES\n")
     ciutat = obte_ciutat()
     temperatura = obte_temperatura(ciutat)
-    #temperatura_real = obtenir_temperatura(ciutat)
-    #compara_temperatures(temperatura_real, temperatura)
+    temperatura_real = obtenir_temperatura(ciutat)
+    compara_temperatures(temperatura_real, temperatura)
 
 
 if __name__ == "__main__":
