@@ -5,7 +5,25 @@ import os
 
 def obte_ciutat_i_temperatura():
     """Retorna la ciutat i la temperatura que l'usuari ha introduït."""
-    return None, None
+    print("SUPER COMPARADOR DE TEMPERATURES\n")
+    # Demanem a l'usuari el nom de la ciutat
+    ciutat = input("Introdueix el nom de la ciutat: ")
+
+    # Demanem a l'usuari la temperatura
+    temperatura = input("Introdueix la temperatura en aquesta ciutat: ")
+
+    # Guardem les dades en una variable
+    informacio = {
+        "ciutat": ciutat,
+        "temperatura": temperatura
+    }       
+
+    # Mostrem la informació guardada
+    print("\nHas desat la següent informació:")
+    print(informacio)
+    # Mostrem la informació amb format
+    print(f"\nLa ciutat {informacio['ciutat']} té una temperatura de {informacio['temperatura']} graus.\n")
+    return ciutat, temperatura
 
 def obtenir_temperatura(ciutat):
     """Retorna la temperatura actual a la ciutat especificada."""
@@ -19,6 +37,7 @@ def main():
     ciutat, temperatura = obte_ciutat_i_temperatura()
     temperatura_real = obtenir_temperatura(ciutat)
     compara_temperatures(temperatura_real, temperatura)
+
 
 if __name__ == "__main__":
     main()
