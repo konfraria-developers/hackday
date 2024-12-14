@@ -72,8 +72,21 @@ def main():
     else:
         mode = "facil"
 
+    ascii_art = """
+ ▗▄▄▖▄▄▄  ▄▄▄▄  ▄▄▄▄  ▗▞▀▜▌ ▄▄▄ ▗▞▀▜▌▐▌ ▄▄▄   ▄▄▄           
+▐▌  █   █ █ █ █ █   █ ▝▚▄▟▌█    ▝▚▄▟▌▐▌█   █ █              
+▐▌  ▀▄▄▄▀ █   █ █▄▄▄▀      █      ▗▞▀▜▌▀▄▄▄▀ █              
+▝▚▄▄▖           █                 ▝▚▄▟▌                     
+                ▀                                           
+▗▄▄▄▖▗▄▄▄▖▗▖  ▗▖▗▄▄▖ ▗▄▄▄▖▗▄▄▖  ▗▄▖▗▄▄▄▖▗▖ ▗▖▗▄▄▖ ▗▄▄▄▖ ▗▄▄▖
+  █  ▐▌   ▐▛▚▞▜▌▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌ ▐▌ █  ▐▌ ▐▌▐▌ ▐▌▐▌   ▐▌   
+  █  ▐▛▀▀▘▐▌  ▐▌▐▛▀▘ ▐▛▀▀▘▐▛▀▚▖▐▛▀▜▌ █  ▐▌ ▐▌▐▛▀▚▖▐▛▀▀▘ ▝▀▚▖
+  █  ▐▙▄▄▖▐▌  ▐▌▐▌   ▐▙▄▄▖▐▌ ▐▌▐▌ ▐▌ █  ▝▚▄▞▘▐▌ ▐▌▐▙▄▄▖▗▄▄▞▘  v0.1
+                                                            
+"""
+    print(ascii_art)
     print(f"Estàs jugant en el mode: {mode}")
-    print("SUPER COMPARADOR DE TEMPERATURES\n")
+
     ciutat = obte_ciutat()
     temperatura = obte_temperatura(ciutat)
     while True:
