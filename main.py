@@ -62,7 +62,6 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1, m
     if mode == "facil":
         missatge = missatge + f" per {diferència}°."
     print(missatge)
-    r
 
 def main():
     if len(sys.argv) > 1:
