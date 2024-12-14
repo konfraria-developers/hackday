@@ -20,9 +20,12 @@ def obtenir_temperatura(ciutat):
     """Retorna la temperatura actual a la ciutat especificada."""
     api_key = os.getenv("TOKEN_API")
     url = f"http://api.openweathermap.org/data/2.5/weather?q={ciutat}&appid={api_key}&units=metric"
-    resposta = requests.get(url)
-    dades = resposta.json()
-    temperatura = dades["main"]["temp"]
+    try:
+        resposta = requests.get(url)
+        dades = resposta.json()
+        temperatura = dades["main"]["temp"]
+    except:
+        return None
     return temperatura
 
 def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
@@ -47,9 +50,15 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
             print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més baixa per {diferència}°.")
 
 def main():
-    ciutat, temperatura = obte_ciutat_i_temperatura()
-    temperatura_real = obtenir_temperatura(ciutat)
-    compara_temperatures(temperatura_real, temperatura)
+    while True:
+        ciutat, temperatura = obte_ciutat_i_temperatura()
+        maybe_temperatura_real = obtenir_temperatura(ciutat)
+        if maybe_temperatura_real is None:
+            continue
+        # Estem segurs que la temperatura es un valor valid
+        temperatura_real = maybe_temperatura_real
+        compara_temperatures(temperatura_real, temperatura)
+        break
 
 
 if __name__ == "__main__":
