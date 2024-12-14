@@ -41,14 +41,14 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1, m
     diferència = temperatura_real - temperatura_suposada  # La diferència pot ser positiva o negativa
     # Comprovar si les temperatures són exactament iguals
     if temperatura_real == temperatura_suposada:
-        print(f"Les temperatures són exactament iguals. Diferència: 0°. 👍")
+        missatge = f"Les temperatures són exactament iguals. Diferència: 0°. 👍"
     
     # Comprovar si la diferència està dins de la tolerància
     elif abs(diferència) <= tolerancia:
         if diferència > 0:
             missatge = f"Les temperatures estan dins de la tolerància. La temperatura real és més alta 👍"
         elif diferència < 0:
-            misstage = f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa 👍"
+            missatge = f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa 👍"
         else:
             missatge = f"Les temperatures estan exactament dins de la tolerància. Diferència: 👍"
     # Si la diferència no està dins de la tolerància
