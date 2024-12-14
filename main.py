@@ -81,7 +81,7 @@ def main():
             continue
         # Estem segurs que la temperatura es un valor valid
         temperatura_real = maybe_temperatura_real
-        compara_temperatures(temperatura_real, temperatura)
+        compara_temperatures(temperatura_real, temperatura, mode=mode)
         break
 
 
