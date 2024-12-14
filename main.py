@@ -42,6 +42,7 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1, m
     # Comprovar si les temperatures són exactament iguals
     if temperatura_real == temperatura_suposada:
         missatge = f"Les temperatures són exactament iguals. Diferència: 0°. 👍"
+        return True
     
     # Comprovar si la diferència està dins de la tolerància
     elif abs(diferència) <= tolerancia:
@@ -97,8 +98,10 @@ def main():
             continue
         # Estem segurs que la temperatura es un valor valid
         temperatura_real = maybe_temperatura_real
-        compara_temperatures(temperatura_real, temperatura, mode=mode)
-        break
+        if compara_temperatures(temperatura_real, temperatura, mode=mode):
+            break
+        else:
+            temperatura = obte_temperatura(ciutat)
 
 
 if __name__ == "__main__":
