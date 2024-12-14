@@ -10,19 +10,10 @@ def obte_ciutat_i_temperatura():
     ciutat = input("Introdueix el nom de la ciutat: ")
 
     # Demanem a l'usuari la temperatura
-    temperatura = input("Introdueix la temperatura en aquesta ciutat: ")
+    temperatura = int(input("Introdueix la temperatura en aquesta ciutat: "))
 
-    # Guardem les dades en una variable
-    informacio = {
-        "ciutat": ciutat,
-        "temperatura": temperatura
-    }       
-
-    # Mostrem la informació guardada
-    print("\nHas desat la següent informació:")
-    print(informacio)
     # Mostrem la informació amb format
-    print(f"\nLa ciutat {informacio['ciutat']} té una temperatura de {informacio['temperatura']} graus.\n")
+    print(f"\nLa ciutat {ciutat} podria tenir una temperatura de {temperatura} graus.\n")
     return ciutat, temperatura
 
 def obtenir_temperatura(ciutat):
