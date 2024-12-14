@@ -63,6 +63,16 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1, m
     print(missatge)
 
 def main():
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "dificil":
+            mode = "dificil"
+        else:
+            print("Mode erroni: Utilitza facil o dificil")
+            return
+    else:
+        mode = "facil"
+
+    print(f"Estàs jugant en el mode: {mode}")
     print("SUPER COMPARADOR DE TEMPERATURES\n")
     ciutat = obte_ciutat()
     temperatura = obte_temperatura(ciutat)
@@ -74,7 +84,7 @@ def main():
             continue
         # Estem segurs que la temperatura es un valor valid
         temperatura_real = maybe_temperatura_real
-        compara_temperatures(temperatura_real, temperatura)
+        compara_temperatures(temperatura_real, temperatura, mode=mode)
         break
 
 
