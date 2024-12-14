@@ -27,24 +27,27 @@ def obtenir_temperatura(ciutat):
 
 def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
     """Calcula la diferència entre la temperatura real i la suposada i comprova si està dins de la tolerància,
-    mostrant si la diferència és positiva o negativa."""
-    
+    mostrant si la diferència és positiva o negativa i afegint emojis per indicar encerts o errors."""
     # Calcular la diferència entre les dues temperatures
     diferència = temperatura_real - temperatura_suposada  # La diferència pot ser positiva o negativa
-
+    # Comprovar si les temperatures són exactament iguals
+    if temperatura_real == temperatura_suposada:
+        print(f"Les temperatures són exactament iguals. Diferència: 0°. 👍")
+    
     # Comprovar si la diferència està dins de la tolerància
-    if abs(diferència) <= tolerancia:
+    elif abs(diferència) <= tolerancia:
         if diferència > 0:
-            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més alta per {diferència}°.")
+            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més alta per {diferència}°. 👍")
         elif diferència < 0:
-            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa per {diferència}°.")
+            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa per {diferència}°. 👍")
         else:
-            print(f"Les temperatures estan exactament dins de la tolerància. Diferència: {diferència}°.")
+            print(f"Les temperatures estan exactament dins de la tolerància. Diferència: {diferència}°. 👍")
+    # Si la diferència no està dins de la tolerància
     else:
         if diferència > 0:
-            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més alta per {diferència}°.")
+            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més alta per {diferència}°. 👎")
         elif diferència < 0:
-            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més baixa per {diferència}°.")
+            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més baixa per {diferència}°. 👎")
 
 def main():
     ciutat, temperatura = obte_ciutat_i_temperatura()
