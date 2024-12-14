@@ -34,7 +34,7 @@ def obtenir_temperatura(ciutat):
         return None
     return temperatura
 
-def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
+def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1, mode="facil"):
     """Calcula la diferència entre la temperatura real i la suposada i comprova si està dins de la tolerància,
     mostrant si la diferència és positiva o negativa i afegint emojis per indicar encerts o errors."""
     # Calcular la diferència entre les dues temperatures
@@ -46,23 +46,26 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
     # Comprovar si la diferència està dins de la tolerància
     elif abs(diferència) <= tolerancia:
         if diferència > 0:
-            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més alta per {diferència}°. 👍")
+            missatge = f"Les temperatures estan dins de la tolerància. La temperatura real és més alta 👍"
         elif diferència < 0:
-            print(f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa per {diferència}°. 👍")
+            misstage = f"Les temperatures estan dins de la tolerància. La temperatura real és més baixa 👍"
         else:
-            print(f"Les temperatures estan exactament dins de la tolerància. Diferència: {diferència}°. 👍")
+            missatge = f"Les temperatures estan exactament dins de la tolerància. Diferència: 👍"
     # Si la diferència no està dins de la tolerància
     else:
         if diferència > 0:
-            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més alta per {diferència}°. 👎")
+            missatge = f"Les temperatures no estan dins de la tolerància. La temperatura real és més alta 👎"
         elif diferència < 0:
-            print(f"Les temperatures no estan dins de la tolerància. La temperatura real és més baixa per {diferència}°. 👎")
+            missatge = f"Les temperatures no estan dins de la tolerància. La temperatura real és més baixa 👎"
+
+    if mode == "facil":
+        missatge = missatge + f" per {diferència}°."
+    print(missatge)
 
 def main():
     print("SUPER COMPARADOR DE TEMPERATURES\n")
     ciutat = obte_ciutat()
     temperatura = obte_temperatura(ciutat)
-
     while True:
         maybe_temperatura_real = obtenir_temperatura(ciutat)
         if maybe_temperatura_real is None:
