@@ -3,18 +3,28 @@ import sys
 import os
 
 
-def obte_ciutat_i_temperatura():
-    """Retorna la ciutat i la temperatura que l'usuari ha introduït."""
-    print("SUPER COMPARADOR DE TEMPERATURES\n")
+def obte_ciutat():
+    """Retorna la ciutat que l'usuari ha introduït."""
     # Demanem a l'usuari el nom de la ciutat
     ciutat = input("Introdueix el nom de la ciutat: ")
-
-    # Demanem a l'usuari la temperatura
-    temperatura = int(input("Introdueix la temperatura en aquesta ciutat: "))
-
     # Mostrem la informació amb format
-    print(f"\nLa ciutat {ciutat} podria tenir una temperatura de {temperatura} graus.\n")
-    return ciutat, temperatura
+    print(f"\nS'ha triat la ciutat: {ciutat}.\n")
+    return ciutat
+
+def obte_temperatura(ciutat):
+    """Retorna la temperatura que l'usuari ha introduït."""
+    # Demanem a l'usuari la temperatura
+    while True:
+        try:
+            temperatura = float(input("Introdueix la temperatura en aquesta ciutat: "))
+            print(f"\nLa ciutat {ciutat} podria tenir una temperatura de {temperatura} graus.\n")
+            return temperatura
+            break
+        except ValueError:
+            print("\033[91mError: Heu d'introduir un valor numeric\033[0m")
+            # Mostrem la informació amb format
+#Tornem a executar la funcio
+    
 
 def obtenir_temperatura(ciutat):
     """Retorna la temperatura actual a la ciutat especificada."""
@@ -34,9 +44,11 @@ def compara_temperatures(temperatura_real, temperatura_suposada, tolerancia=1):
         print(f"Les temperatures no estan dins de la tolerància. Diferència: {diferència}°")
 
 def main():
-    ciutat, temperatura = obte_ciutat_i_temperatura()
-    temperatura_real = obtenir_temperatura(ciutat)
-    compara_temperatures(temperatura_real, temperatura)
+    print("SUPER COMPARADOR DE TEMPERATURES\n")
+    ciutat = obte_ciutat()
+    temperatura = obte_temperatura(ciutat)
+    #temperatura_real = obtenir_temperatura(ciutat)
+    #compara_temperatures(temperatura_real, temperatura)
 
 
 if __name__ == "__main__":
